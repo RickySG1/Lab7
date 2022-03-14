@@ -18,15 +18,15 @@ device = {
 
 try:
     c = ConnectHandler(**device)
-    output = c.send_command("show run")
+    output = c.send_command('show run')
     f = open(f'back_configuration','x')
     f.write(output)
     f.close
 except (NetMikoTimeoutException):
-    print("The following has timed out: " device['ip'])
+    print("The following has timed out: " + device['ip'])
 except (AuthenticationException):
-    print("Authentication failure on device: " device['ip'])
+    print("Authentication failure on device: " + device['ip'])
 except (SSHException):
-    print("Could not connect to the device using SSH. Please check SSH settings on: " device['ip'])
+    print("Could not connect to the device using SSH. Please check SSH settings on: " + device['ip'])
 
 print("The Script has Completed")
